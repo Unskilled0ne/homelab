@@ -17,6 +17,12 @@
         description: Automated Incident Response & Closed-Loop Containment Engine
         ping: http://aegis-soar:8000
 
+    - Pi 4 NDR Sensor:
+        icon: raspberry-pi.png
+        href: http://10.42.0.161
+        description: Perimeter TAP Suricata & Zeek NDR Engine (scaleless)
+        ping: 10.42.0.161
+
 - Local AI Acceleration:
     - Open-WebUI:
         icon: open-webui.png

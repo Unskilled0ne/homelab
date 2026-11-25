@@ -1,0 +1,21 @@
+- Engineering Portfolios:
+    - GitHub (Unskilled0ne):
+        - icon: github.png
+          href: https://github.com/Unskilled0ne
+    - Aegis SOAR:
+        - icon: shield.png
+          href: https://github.com/Unskilled0ne/aegis-soar
+    - ShadowPot:
+        - icon: honeypot.png
+          href: https://github.com/Unskilled0ne/shadowpot
+    - Pi4 NDR Sensor:
+        - icon: raspberry-pi.png
+          href: https://github.com/Unskilled0ne/pi4-ndr-sensor
+
+- Threat Intelligence & SecOps:
+    - MITRE ATT&CK:
+        - icon: si-mitre.png
+          href: https://attack.mitre.org
+    - AbuseIPDB:
+        - icon: si-alienvault.png
+          href: https://www.abuseipdb.com

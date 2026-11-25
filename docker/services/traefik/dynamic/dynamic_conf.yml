@@ -1,0 +1,81 @@
+http:
+  routers:
+    portal-router:
+      rule: "Host(`portal.lab`)"
+      entryPoints: ["web"]
+      service: portal-service
+    grafana-router:
+      rule: "Host(`grafana.lab`)"
+      entryPoints: ["web"]
+      service: grafana-service
+    prometheus-router:
+      rule: "Host(`prometheus.lab`)"
+      entryPoints: ["web"]
+      service: prometheus-service
+    uptime-router:
+      rule: "Host(`uptime.lab`)"
+      entryPoints: ["web"]
+      service: uptime-service
+    cadvisor-router:
+      rule: "Host(`cadvisor.lab`)"
+      entryPoints: ["web"]
+      service: cadvisor-service
+    ai-router:
+      rule: "Host(`ai.lab`)"
+      entryPoints: ["web"]
+      service: ai-service
+    trap-router:
+      rule: "Host(`trap.lab`)"
+      entryPoints: ["web"]
+      service: trap-service
+    soc-router:
+      rule: "Host(`soc.lab`)"
+      entryPoints: ["web"]
+      service: soc-service
+    dns-router:
+      rule: "Host(`dns.lab`)"
+      entryPoints: ["web"]
+      service: dns-service
+
+  services:
+    portal-service:
+      loadBalancer:
+        servers:
+          - url: "http://homepage:3000"
+    grafana-service:
+      loadBalancer:
+        servers:
+          - url: "http://grafana:3000"
+    prometheus-service:
+      loadBalancer:
+        servers:
+          - url: "http://prometheus:9090"
+    uptime-service:
+      loadBalancer:
+        servers:
+          - url: "http://uptime-kuma:3001"
+    cadvisor-service:
+      loadBalancer:
+        servers:
+          - url: "http://cadvisor:8080"
+    ai-service:
+      loadBalancer:
+        servers:
+          - url: "http://open-webui:8080"
+    trap-service:
+      loadBalancer:
+        servers:
+          - url: "http://shadowpot:8080"
+    soc-service:
+      loadBalancer:
+        serversTransport: insecureTransport
+        servers:
+          - url: "https://single-node-wazuh.dashboard-1:5601"
+    dns-service:
+      loadBalancer:
+        servers:
+          - url: "http://adguardhome:3000"
+
+  serversTransports:
+    insecureTransport:
+      insecureSkipVerify: true

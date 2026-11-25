@@ -1,0 +1,19 @@
+title: "SecOps & AI Cyber Range | Vasilis Tsiamouras"
+theme: dark
+color: slate
+layout:
+  Security Operations & Deception:
+    style: row
+    columns: 2
+  Local AI Acceleration:
+    style: row
+    columns: 1
+  Observability & Telemetry:
+    style: row
+    columns: 4
+  Network & Ingress:
+    style: row
+    columns: 2
+
+headerStyle: clean
+hideVersion: true

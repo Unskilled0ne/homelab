@@ -10,15 +10,35 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - traefik-certs:/letsencrypt
+      - ./traefik/dynamic:/etc/traefik/dynamic:ro
     command:
       - "--api.dashboard=true"
       - "--api.insecure=false"
       - "--providers.docker=true"
       - "--providers.docker.exposedbydefault=false"
+      - "--providers.file.directory=/etc/traefik/dynamic"
+      - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
-    labels:
-      - "traefik.enable=true"
+    networks:
+      - default
+      - homelab-net
+
+  homepage:
+    image: ghcr.io/gethomepage/homepage:latest
+    container_name: homepage
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3005:3000"
+    volumes:
+      - ./homepage/config:/app/config
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    environment:
+      - LOG_LEVEL=info
+      - HOMEPAGE_ALLOWED_HOSTS=*
+    networks:
+      - default
+      - homelab-net
 
   adguardhome:
     image: adguard/adguardhome:latest
@@ -30,8 +50,15 @@ services:
     volumes:
       - adguard-work:/opt/adguardhome/work
       - adguard-conf:/opt/adguardhome/conf
+    networks:
+      - default
+      - homelab-net
 
 volumes:
   traefik-certs:
   adguard-work:
   adguard-conf:
+
+networks:
+  homelab-net:
+    external: true

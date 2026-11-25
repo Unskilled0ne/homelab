@@ -11,6 +11,12 @@
         description: High-Interaction SSH Decoy & Telemetry Trap
         ping: http://shadowpot:8080
 
+    - Aegis SOAR:
+        icon: siem.png
+        href: http://soar.lab
+        description: Automated Incident Response & Closed-Loop Containment Engine
+        ping: http://aegis-soar:8000
+
 - Local AI Acceleration:
     - Open-WebUI:
         icon: open-webui.png

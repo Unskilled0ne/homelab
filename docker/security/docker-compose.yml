@@ -11,3 +11,23 @@ services:
       - /home/unskilledone/Desktop/Herman/shadowpot/data:/app/data
       - /home/unskilledone/Desktop/Herman/shadowpot/quarantine:/app/quarantine
       - /home/unskilledone/Desktop/Herman/shadowpot/config.yaml:/app/config.yaml:ro
+    networks:
+      - default
+      - homelab-net
+
+  aegis-soar:
+    image: aegis-soar:latest
+    container_name: aegis-soar
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:8082:8000"
+    volumes:
+      - /home/unskilledone/Desktop/Herman/soar-incident-response/logs:/app/logs
+      - /home/unskilledone/Desktop/Herman/soar-incident-response/config.yaml:/app/config.yaml:ro
+    networks:
+      - default
+      - homelab-net
+
+networks:
+  homelab-net:
+    external: true

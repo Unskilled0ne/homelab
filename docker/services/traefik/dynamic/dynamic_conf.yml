@@ -36,8 +36,16 @@ http:
       rule: "Host(`dns.lab`)"
       entryPoints: ["web"]
       service: dns-service
+    soar-router:
+      rule: "Host(`soar.lab`)"
+      entryPoints: ["web"]
+      service: soar-service
 
   services:
+    soar-service:
+      loadBalancer:
+        servers:
+          - url: "http://aegis-soar:8000"
     portal-service:
       loadBalancer:
         servers:

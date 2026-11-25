@@ -1,0 +1,13 @@
+services:
+  shadowpot:
+    image: shadowpot:latest
+    container_name: shadowpot
+    restart: unless-stopped
+    ports:
+      - "2222:2222"
+      - "127.0.0.1:8085:8080"
+    volumes:
+      - /home/unskilledone/Desktop/Herman/shadowpot/logs:/app/logs
+      - /home/unskilledone/Desktop/Herman/shadowpot/data:/app/data
+      - /home/unskilledone/Desktop/Herman/shadowpot/quarantine:/app/quarantine
+      - /home/unskilledone/Desktop/Herman/shadowpot/config.yaml:/app/config.yaml:ro

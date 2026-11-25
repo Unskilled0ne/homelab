@@ -1,0 +1,8 @@
+all:
+  hosts:
+    pc:
+      ansible_connection: local
+    pi:
+      ansible_host: 10.42.0.161
+      ansible_user: seath
+      ansible_ssh_private_key_file: ~/.ssh/id_ed25519

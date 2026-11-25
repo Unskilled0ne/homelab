@@ -6,6 +6,10 @@ on:
   pull_request:
     branches: [ main ]
 
+# Enforce least-privilege permissions for GITHUB_TOKEN
+permissions:
+  contents: read
+
 jobs:
   validate-compose:
     name: Validate Docker Compose Configurations

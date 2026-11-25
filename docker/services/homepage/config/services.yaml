@@ -3,7 +3,7 @@
         icon: wazuh.png
         href: http://soc.lab
         description: Centralized XDR & MITRE ATT&CK Analytics
-        ping: http://single-node-wazuh.dashboard-1:5601
+        ping: https://single-node-wazuh.dashboard-1:5601
 
     - ShadowPot Honeypot:
         icon: honeypot.png

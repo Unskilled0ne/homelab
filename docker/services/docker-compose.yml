@@ -1,6 +1,6 @@
 services:
   traefik:
-    image: traefik:v3.4
+    image: traefik:latest
     container_name: traefik
     restart: unless-stopped
     ports:
@@ -20,6 +20,8 @@ services:
       - "--providers.file.watch=true"
       - "--entrypoints.web.address=:80"
       - "--entrypoints.websecure.address=:443"
+    environment:
+      - DOCKER_API_VERSION=1.45
     networks:
       - default
       - homelab-net
@@ -36,6 +38,8 @@ services:
     environment:
       - LOG_LEVEL=info
       - HOMEPAGE_ALLOWED_HOSTS=*
+      - NODE_TLS_REJECT_UNAUTHORIZED=0
+      - DOCKER_API_VERSION=1.45
     networks:
       - default
       - homelab-net

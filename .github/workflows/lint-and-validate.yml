@@ -1,0 +1,42 @@
+name: Validate Homelab Infrastructure
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  validate-compose:
+    name: Validate Docker Compose Configurations
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Validate AI Compose
+        run: docker compose -f docker/ai/docker-compose.yml config
+
+      - name: Validate Monitoring Compose
+        run: docker compose -f docker/monitoring/docker-compose.yml config
+
+      - name: Validate Services Compose
+        run: docker compose -f docker/services/docker-compose.yml config
+
+  ansible-lint:
+    name: Lint Ansible Playbooks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Ansible & ansible-lint
+        run: pip install ansible ansible-lint
+
+      - name: Syntax check Ansible playbooks
+        run: ansible-playbook --syntax-check -i ansible/inventory.yml ansible/playbooks/pc-setup.yml

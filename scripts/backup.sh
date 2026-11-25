@@ -25,6 +25,7 @@ echo "[+] Starting homelab and project backup at $(date)..."
     --exclude='**/*.pyc' \
     --exclude='**/node_modules/**' \
     --exclude='**/.git/objects/**' \
+    --exclude='**/wazuh_indexer_ssl_certs/**' \
     --tag "automated-daily"
 
 echo "[+] Pruning snapshots older than 30 days..."
